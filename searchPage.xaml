@@ -1,0 +1,99 @@
+﻿<Page x:Class="Password_Recorder.searchPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Password_Recorder"
+      mc:Ignorable="d" 
+      d:DesignHeight="452.148" d:DesignWidth="700"
+      Title="searchPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <!--Password Dataset (Temperitely)-->
+            <XmlDataProvider x:Key="passwordRepo" XPath="Repo">
+                <x:XData>
+                    <Repo xmlns="">
+                        <Account Name="google">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="fire fox">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="statefarm">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="new york time">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="moodle">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="gradescope">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="car rush">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="league of legend">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="linkedin">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                    </Repo>
+                </x:XData>
+            </XmlDataProvider>
+
+            <!--Name item template-->
+            <DataTemplate x:Key="AccountTemplate">
+                <Label Content="{Binding XPath=@Name}" />
+            </DataTemplate>
+
+            <DataTemplate x:Key="UsernameTemplate">
+                <Label Content="{Binding XPath=@content}"/>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <!-- Background -->
+        <Grid.Background>
+            <SolidColorBrush Color="AliceBlue" />
+        </Grid.Background>
+
+        <Label Style="{StaticResource headerTextStyle}" Grid.Row="0" Height="45" Margin="330,0" Width="40">
+            查
+        </Label>
+
+        <Border Style="{StaticResource listHeaderStyle}" Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,0.333">
+            <Label Style="{StaticResource listHeaderTextStyle}">Accounts List</Label>
+        </Border>
+
+        <ListBox Name="AccountListBox" 
+            ItemsSource="{Binding Source={StaticResource passwordRepo}, XPath=Account}"
+            ItemTemplate="{StaticResource AccountTemplate}" 
+            HorizontalContentAlignment="Center" Grid.Row="1"/>
+
+
+        <Button Grid.Row="3" Click="Save_Click" Style="{StaticResource buttonStyle}" HorizontalAlignment="Left"  Height="Auto">存</Button>
+
+        <Button Grid.Row="3" Click="Delete_Click" Style="{StaticResource buttonStyle}"  Height="Auto">删</Button>
+    </Grid>
+</Page>
