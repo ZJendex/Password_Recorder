@@ -47,34 +47,5 @@ namespace Password_Recorder
             deletePage deletePage = new deletePage();
             this.NavigationService.Navigate(deletePage);
         }
-
-        public class Account
-        {
-
-            private string nameValue;
-
-            public string Name
-            {
-                get { return nameValue; }
-                set { nameValue = value; }
-            }
-
-            private string usernameValue;
-
-            public string Username
-            {
-                get { return usernameValue; }
-                set { usernameValue = value; }
-            }
-
-            private string passwordValue;
-
-            public string Password
-            {
-                get { return passwordValue; }
-                set { passwordValue = value; }
-            }
-
-        }
     }
 }
