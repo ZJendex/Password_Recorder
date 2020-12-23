@@ -38,5 +38,7 @@ namespace Password_Recorder
             deletePage deletePage = new deletePage();
             this.NavigationService.Navigate(deletePage);
         }
+
+
     }
 }

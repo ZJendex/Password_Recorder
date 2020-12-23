@@ -20,9 +20,61 @@ namespace Password_Recorder
     /// </summary>
     public partial class savePage : Page
     {
+
+        Account account = new Account { Name = " ", Username = " ", Password = " " };
         public savePage()
         {
             InitializeComponent();
+            this.DataContext = account;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string message = account.Name + " " + account.Username + " " + account.Password + " saved successfully!!";
+            MessageBox.Show(message);
+        }
+
+        private void Seach_Click(object sender, RoutedEventArgs e)
+        {
+            // go to the searching page
+            searchPage searchPage = new searchPage();
+            this.NavigationService.Navigate(searchPage);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            // go to the delete page
+            deletePage deletePage = new deletePage();
+            this.NavigationService.Navigate(deletePage);
+        }
+
+        public class Account
+        {
+
+            private string nameValue;
+
+            public string Name
+            {
+                get { return nameValue; }
+                set { nameValue = value; }
+            }
+
+            private string usernameValue;
+
+            public string Username
+            {
+                get { return usernameValue; }
+                set { usernameValue = value; }
+            }
+
+            private string passwordValue;
+
+            public string Password
+            {
+                get { return passwordValue; }
+                set { passwordValue = value; }
+            }
+
         }
     }
 }

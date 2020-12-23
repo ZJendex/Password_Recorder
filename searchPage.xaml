@@ -67,10 +67,6 @@
             <DataTemplate x:Key="AccountTemplate">
                 <Label Content="{Binding XPath=@Name}" />
             </DataTemplate>
-
-            <DataTemplate x:Key="UsernameTemplate">
-                <Label Content="{Binding XPath=@content}"/>
-            </DataTemplate>
         </Grid.Resources>
 
         <!-- Background -->
@@ -94,6 +90,6 @@
 
         <Button Grid.Row="3" Click="Save_Click" Style="{StaticResource buttonStyle}" HorizontalAlignment="Left"  Height="Auto">存</Button>
 
-        <Button Grid.Row="3" Click="Delete_Click" Style="{StaticResource buttonStyle}"  Height="Auto">删</Button>
+        <Button Grid.Row="3" Click="Delete_Click" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Height="Auto">删</Button>
     </Grid>
 </Page>
