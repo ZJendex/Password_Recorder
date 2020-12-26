@@ -8,6 +8,7 @@
       d:DesignHeight="452.148" d:DesignWidth="700"
       Title="searchPage">
 
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -82,11 +83,15 @@
             <Label Style="{StaticResource listHeaderTextStyle}">Accounts List</Label>
         </Border>
 
-        <ListBox Name="AccountListBox" 
+        <!--<ListBox Name="AccountListBox" 
             ItemsSource="{Binding Source={StaticResource passwordRepo}, XPath=Account}"
             ItemTemplate="{StaticResource AccountTemplate}" 
-            HorizontalContentAlignment="Center" Grid.Row="1"/>
+            HorizontalContentAlignment="Center" Grid.Row="1"/>-->
 
+        <!--<DataGrid Name="McDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="12,12,12,12" Grid.Row="1" Height="200" Width="600" AutoGenerateColumns="True" SelectionChanged="McDataGrid_SelectionChanged"/>-->
+        <DataGrid
+            HorizontalAlignment="Center" VerticalAlignment="Top" Margin="12,12,12,12" Grid.Row="1" Height="200" Width="600"
+            Loaded="DataGrid_Loaded"/>
 
         <Button Grid.Row="3" Click="Save_Click" Style="{StaticResource buttonStyle}" HorizontalAlignment="Left"  Height="Auto">存</Button>
 

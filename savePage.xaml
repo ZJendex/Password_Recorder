@@ -45,7 +45,7 @@
          Text = "{Binding Password, Mode = TwoWay}"/>
 
         <StackPanel Grid.Row = "3" Grid.Column = "1" Margin="15 20">
-            <Button Content = "Save" Click="Button_Click" />
+            <Button Content = "Save" Click="Save_Click" />
         </StackPanel>
 
         <Button Grid.Row="4" Click="Seach_Click" Style="{StaticResource buttonStyle}" HorizontalAlignment="Left">查</Button>

@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Password_Recorder
 {
@@ -21,14 +24,14 @@ namespace Password_Recorder
     public partial class savePage : Page
     {
 
-        Account account = new Account { Name = " ", Username = " ", Password = " " };
+        Account account = new Account (" ", " ", " ");
         public savePage()
         {
             InitializeComponent();
             this.DataContext = account;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Save_Click(object sender, RoutedEventArgs e)
         {
             string message = account.Name + " " + account.Username + " " + account.Password + " saved successfully!!";
             MessageBox.Show(message);
