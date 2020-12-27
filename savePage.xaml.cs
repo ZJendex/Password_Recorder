@@ -33,7 +33,7 @@ namespace Password_Recorder
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            string message = account.Name + account.Username + account.Password;
+            string message = account.Name + " " + account.Username + " " + account.Password;
             using (System.IO.StreamWriter file =
             new System.IO.StreamWriter(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt", true))
             {
@@ -57,6 +57,21 @@ namespace Password_Recorder
             // go to the delete page
             deletePage deletePage = new deletePage();
             this.NavigationService.Navigate(deletePage);
+        }
+
+        private void nameText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            nameText.Text = nameText.Text.Replace(" ", "");
+        }
+
+        private void usernameText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            usernameText.Text = usernameText.Text.Replace(" ", "");
+        }
+
+        private void passwordText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            passwordText.Text = passwordText.Text.Replace(" ", "");
         }
     }
 }
