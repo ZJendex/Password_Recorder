@@ -46,6 +46,24 @@ namespace Password_Recorder
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string pathName = @"c:\Users\zhube\AppData\MyWindowsApp";
+            string fileName = "password.txt";
+            string pathString = System.IO.Path.Combine(pathName, fileName);
+
+            if (!System.IO.File.Exists(pathString))
+            {
+                using (System.IO.FileStream fs = System.IO.File.Create(pathString))
+                {
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("File \"{0}\" already exists.", fileName);
+                MessageBox.Show("File \"{0}\" already exists.", fileName);
+            }
+
+
             var items = new List<Account>();
             items.Add(new Account("Google", "ketty.gmail.com", "123ausu!!"));
             items.Add(new Account("Tencent", "ketty.gmail.com", "668**!"));
