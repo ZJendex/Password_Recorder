@@ -62,7 +62,7 @@ namespace Password_Recorder
             foreach (string line in lines)
             {
                 // Use a tab to indent each line of the file.
-                string[] words = line.Split(' ');
+                string[] words = line.Trim().Split(' ');
                 items.Add(new Account(words[0], words[1], words[2]));
             }
 

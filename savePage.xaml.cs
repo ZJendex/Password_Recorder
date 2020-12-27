@@ -33,8 +33,16 @@ namespace Password_Recorder
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            string message = account.Name + " " + account.Username + " " + account.Password + " saved successfully!!";
-            MessageBox.Show(message);
+            string message = account.Name + account.Username + account.Password;
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt", true))
+            {
+                file.WriteLine(message);
+            }
+            MessageBox.Show("Saved successfuly!");
+
+            savePage savePage = new savePage();
+            this.NavigationService.Navigate(savePage);
         }
 
         private void Seach_Click(object sender, RoutedEventArgs e)
