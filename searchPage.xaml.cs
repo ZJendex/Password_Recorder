@@ -50,25 +50,23 @@ namespace Password_Recorder
             string fileName = "password.txt";
             string pathString = System.IO.Path.Combine(pathName, fileName);
 
+            var items = new List<Account>();
+
+            // if DB doesn't created, create the file
             if (!System.IO.File.Exists(pathString))
             {
-                using (System.IO.FileStream fs = System.IO.File.Create(pathString))
-                {
-
-                }
+                using (System.IO.FileStream fs = System.IO.File.Create(pathString));
             }
-            else
+
+            string[] lines = System.IO.File.ReadAllLines(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+            foreach (string line in lines)
             {
-                Console.WriteLine("File \"{0}\" already exists.", fileName);
-                MessageBox.Show("File \"{0}\" already exists.", fileName);
+                // Use a tab to indent each line of the file.
+                string[] words = line.Split(' ');
+                items.Add(new Account(words[0], words[1], words[2]));
             }
 
-
-            var items = new List<Account>();
-            items.Add(new Account("Google", "ketty.gmail.com", "123ausu!!"));
-            items.Add(new Account("Tencent", "ketty.gmail.com", "668**!"));
-            items.Add(new Account("J&C", "ketty.gmail.com", "ppanjk2"));
-
+            // send data to dataGrid
             AccountsGrid.ItemsSource = items;
         }
 
