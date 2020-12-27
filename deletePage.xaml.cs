@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
+using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -56,8 +56,12 @@ namespace Password_Recorder
             foreach (string line in lines)
             {
                 // Use a tab to indent each line of the file.
-                string[] words = line.Trim().Split(' ');
-                items.Add(new Account(words[0], words[1], words[2]));
+                string trimedLine = line.Trim();
+                string[] words = System.Text.RegularExpressions.Regex.Split(trimedLine, @"\s{1,}");
+                if (words.Length == 3)
+                {
+                    items.Add(new Account(words[0], words[1], words[2]));
+                }
             }
 
             // send data to dataGrid

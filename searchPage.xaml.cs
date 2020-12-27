@@ -62,8 +62,12 @@ namespace Password_Recorder
             foreach (string line in lines)
             {
                 // Use a tab to indent each line of the file.
-                string[] words = line.Trim().Split(' ');
-                items.Add(new Account(words[0], words[1], words[2]));
+                string trimedLine = line.Trim();
+                string[] words = System.Text.RegularExpressions.Regex.Split(trimedLine, @"\s{1,}");
+                if (words.Length == 3)
+                {
+                    items.Add(new Account(words[0], words[1], words[2]));
+                }
             }
 
             // send data to dataGrid
