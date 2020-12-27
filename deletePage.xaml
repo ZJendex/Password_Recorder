@@ -9,6 +9,105 @@
       Title="deletePage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <!--Password Dataset (Temperitely)-->
+            <XmlDataProvider x:Key="passwordRepo" XPath="Repo">
+                <x:XData>
+                    <Repo xmlns="">
+                        <Account Name="google">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="fire fox">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="statefarm">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="new york time">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="moodle">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="gradescope">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="car rush">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="league of legend">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                        <Account Name="linkedin">
+                            <Username content="kklm.gmail.com" />
+                            <Password content="1234" />
+                        </Account>
+                    </Repo>
+                </x:XData>
+            </XmlDataProvider>
+
+            <!--Name item template-->
+            <DataTemplate x:Key="AccountTemplate">
+                <Label Content="{Binding XPath=@Name}" />
+            </DataTemplate>
+        </Grid.Resources>
+
+        <!-- Background -->
+        <Grid.Background>
+            <SolidColorBrush Color="AliceBlue" />
+        </Grid.Background>
+
+        <Label Style="{StaticResource headerTextStyle}" Grid.Row="0" Height="45" Margin="330,0" Width="40">
+            删
+        </Label>
+
+        <Border Style="{StaticResource listHeaderStyle}" Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,0.333">
+            <Label Style="{StaticResource listHeaderTextStyle}">Accounts List</Label>
+        </Border>
+
+        <Button Click="Button_Click" Grid.Column="1" Grid.Row="1">Refresh</Button>
+
+        <DataGrid
+            HorizontalAlignment="Center" VerticalAlignment="Top" Margin="12,12,12,12" Grid.Row="1" Height="200" Width="600"
+            AutoGenerateColumns="False" Name="AccountsGrid" >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"  Binding="{Binding Path = Name}"/>
+                <DataGridTextColumn Header="Username" Binding="{Binding Path = Username}" />
+                <DataGridTextColumn Header="Password" Binding="{Binding Path = Password}" />
+
+                <DataGridTemplateColumn Header="Action">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Margin="2 0" Click="Delete_Click">Delete</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <Button Grid.Row="3" Click="Save_Click" Style="{StaticResource buttonStyle}" HorizontalAlignment="Left"  Height="Auto">存</Button>
+
+        <Button Grid.Row="3" Click="Search_Click" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Height="Auto">查</Button>
     </Grid>
 </Page>

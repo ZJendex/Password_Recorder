@@ -24,5 +24,50 @@ namespace Password_Recorder
         {
             InitializeComponent();
         }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            // go to the saving page
+            savePage savePage = new savePage();
+            this.NavigationService.Navigate(savePage);
+        }
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            // go to the saving page
+            searchPage searchPage = new searchPage();
+            this.NavigationService.Navigate(searchPage);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string pathName = @"c:\Users\zhube\AppData\MyWindowsApp";
+            string fileName = "password.txt";
+            string pathString = System.IO.Path.Combine(pathName, fileName);
+
+            var items = new List<Account>();
+
+            // if DB doesn't created, create the file
+            if (!System.IO.File.Exists(pathString))
+            {
+                using (System.IO.FileStream fs = System.IO.File.Create(pathString)) ;
+            }
+
+            string[] lines = System.IO.File.ReadAllLines(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                string[] words = line.Trim().Split(' ');
+                items.Add(new Account(words[0], words[1], words[2]));
+            }
+
+            // send data to dataGrid
+            AccountsGrid.ItemsSource = items;
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "Delete successfully!!";
+            MessageBox.Show(message);
+        }
     }
 }
