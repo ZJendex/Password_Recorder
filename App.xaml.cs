@@ -27,9 +27,6 @@ namespace Password_Recorder
             this.Username = Username;
             this.Password = Password;
         }
-
     }
-
-
 
 }

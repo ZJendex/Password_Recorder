@@ -49,7 +49,7 @@ namespace Password_Recorder
             // if DB doesn't created, create the file
             if (!System.IO.File.Exists(pathString))
             {
-                using (System.IO.FileStream fs = System.IO.File.Create(pathString)) ;
+                using (System.IO.FileStream fs = System.IO.File.Create(pathString));
             }
 
             string[] lines = System.IO.File.ReadAllLines(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
@@ -68,9 +68,37 @@ namespace Password_Recorder
             AccountsGrid.ItemsSource = items;
         }
 
+        public static T GetVisualChild<T>(Visual parent) where T : Visual
+        {
+            T child = default(T);
+            int numVisuals = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < numVisuals; i++)
+            {
+                Visual v = (Visual)VisualTreeHelper.GetChild(parent, i);
+                child = v as T;
+                if (child == null)
+                {
+                    child = GetVisualChild<T>(v);
+                }
+                if (child != null)
+                {
+                    break;
+                }
+            }
+            return child;
+        }
+
+        public static DataGridRow GetSelectedRow(DataGrid grid)
+        {
+            return (DataGridRow)grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem);
+        }
+
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            string message = "Delete successfully!!";
+            int loc = GetSelectedRow(AccountsGrid).GetIndex();
+
+
+            string message = loc + " " + "Delete successfully!!";
             MessageBox.Show(message);
         }
     }
