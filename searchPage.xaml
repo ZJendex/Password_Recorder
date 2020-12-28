@@ -19,57 +19,6 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Grid.Resources>
-            <!--Password Dataset (Temperitely)-->
-            <XmlDataProvider x:Key="passwordRepo" XPath="Repo">
-                <x:XData>
-                    <Repo xmlns="">
-                        <Account Name="google">
-                            <Username content="kklm.gmail.com" />
-                            <Password content="1234" />
-                        </Account>
-                        <Account Name="fire fox">
-                            <Username content="kklm.gmail.com" />
-                            <Password content="1234" />
-                        </Account>
-                        <Account Name="statefarm">
-                            <Username content="kklm.gmail.com" />
-                            <Password content="1234" />
-                        </Account>
-                        <Account Name="new york time">
-                            <Username content="kklm.gmail.com" />
-                            <Password content="1234" />
-                        </Account>
-                        <Account Name="moodle">
-                            <Username content="kklm.gmail.com" />
-                            <Password content="1234" />
-                        </Account>
-                        <Account Name="gradescope">
-                            <Username content="kklm.gmail.com" />
-                            <Password content="1234" />
-                        </Account>
-                        <Account Name="car rush">
-                            <Username content="kklm.gmail.com" />
-                            <Password content="1234" />
-                        </Account>
-                        <Account Name="league of legend">
-                            <Username content="kklm.gmail.com" />
-                            <Password content="1234" />
-                        </Account>
-                        <Account Name="linkedin">
-                            <Username content="kklm.gmail.com" />
-                            <Password content="1234" />
-                        </Account>
-                    </Repo>
-                </x:XData>
-            </XmlDataProvider>
-
-            <!--Name item template-->
-            <DataTemplate x:Key="AccountTemplate">
-                <Label Content="{Binding XPath=@Name}" />
-            </DataTemplate>
-        </Grid.Resources>
-
         <!-- Background -->
         <Grid.Background>
             <SolidColorBrush Color="AliceBlue" />
