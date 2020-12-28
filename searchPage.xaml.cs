@@ -74,10 +74,89 @@ namespace Password_Recorder
             AccountsGrid.ItemsSource = items;
         }
 
+        /**
+         *--------------------------------------------------------------------
+         *             enable to locate the click button on data grid
+         */
+        public static T GetVisualChild<T>(Visual parent) where T : Visual
+        {
+            T child = default(T);
+            int numVisuals = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < numVisuals; i++)
+            {
+                Visual v = (Visual)VisualTreeHelper.GetChild(parent, i);
+                child = v as T;
+                if (child == null)
+                {
+                    child = GetVisualChild<T>(v);
+                }
+                if (child != null)
+                {
+                    break;
+                }
+            }
+            return child;
+        }
+
+        public static DataGridRow GetSelectedRow(DataGrid grid)
+        {
+            return (DataGridRow)grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem);
+        }
+        /**
+         *--------------------------------------------------------------------
+         */
+
         private void Copy_Click(object sender, RoutedEventArgs e)
         {
+            // get the location
+            int loc = GetSelectedRow(AccountsGrid).GetIndex();
+            int count = 0;
+            ArrayList rst = new ArrayList();
+            string[] lines = System.IO.File.ReadAllLines(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+
+            // only take lines wtihout target line
+            foreach (string line in lines)
+            {
+                if (count == loc)
+                {
+                    string trimedLine = line.Trim();
+                    string[] words = System.Text.RegularExpressions.Regex.Split(trimedLine, @"\s{1,}");
+                    if (words.Length == 3)
+                    {
+                        // copy password to clipboard
+                        Clipboard.SetText(words[2]);
+                    }
+                }
+                count++;
+            }
             string message = "Copy successfully!!";
             MessageBox.Show(message);
         }
+
+        private void Show_Click(object sender, RoutedEventArgs e)
+        {
+            // get the location
+            int loc = GetSelectedRow(AccountsGrid).GetIndex();
+            int count = 0;
+            ArrayList rst = new ArrayList();
+            string[] lines = System.IO.File.ReadAllLines(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+
+            // only take lines wtihout target line
+            foreach (string line in lines)
+            {
+                if (count == loc)
+                {
+                    string trimedLine = line.Trim();
+                    string[] words = System.Text.RegularExpressions.Regex.Split(trimedLine, @"\s{1,}");
+                    if (words.Length == 3)
+                    {
+                        string message = "The password is " + words[2];
+                        MessageBox.Show(message);
+                    }
+                }
+                count++;
+            }
+        }
+
     }
 }
