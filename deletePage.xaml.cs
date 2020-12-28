@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows;
+using System.Collections;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -68,6 +68,10 @@ namespace Password_Recorder
             AccountsGrid.ItemsSource = items;
         }
 
+        /**
+         *--------------------------------------------------------------------
+         *             enable to locate the click button on data grid
+         */
         public static T GetVisualChild<T>(Visual parent) where T : Visual
         {
             T child = default(T);
@@ -92,12 +96,30 @@ namespace Password_Recorder
         {
             return (DataGridRow)grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem);
         }
+        /**
+         *--------------------------------------------------------------------
+         */
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            // get the location
             int loc = GetSelectedRow(AccountsGrid).GetIndex();
+            int count = 0;
+            ArrayList rst = new ArrayList();
+            string[] lines = System.IO.File.ReadAllLines(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
 
-
+            // only take lines wtihout target line
+            foreach (string line in lines)
+            {
+                if (count != loc)
+                {
+                    rst.Add(line);
+                }
+                count++;
+            }
+            
+            // re-print the file
+            System.IO.File.WriteAllLines(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt", (String[])rst.ToArray(typeof(string)));
             string message = loc + " " + "Delete successfully!!";
             MessageBox.Show(message);
         }
