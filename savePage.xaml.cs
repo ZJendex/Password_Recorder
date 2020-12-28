@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Password_Recorder
 {
@@ -21,17 +24,25 @@ namespace Password_Recorder
     public partial class savePage : Page
     {
 
-        Account account = new Account { Name = " ", Username = " ", Password = " " };
+        Account account = new Account (" ", " ", " ");
         public savePage()
         {
             InitializeComponent();
             this.DataContext = account;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Save_Click(object sender, RoutedEventArgs e)
         {
-            string message = account.Name + " " + account.Username + " " + account.Password + " saved successfully!!";
-            MessageBox.Show(message);
+            string message = account.Name + " " + account.Username + " " + account.Password;
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt", true))
+            {
+                file.WriteLine(message);
+            }
+            MessageBox.Show("Saved successfuly!");
+
+            savePage savePage = new savePage();
+            this.NavigationService.Navigate(savePage);
         }
 
         private void Seach_Click(object sender, RoutedEventArgs e)
@@ -46,6 +57,21 @@ namespace Password_Recorder
             // go to the delete page
             deletePage deletePage = new deletePage();
             this.NavigationService.Navigate(deletePage);
+        }
+
+        private void nameText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            nameText.Text = nameText.Text.Replace(" ", "");
+        }
+
+        private void usernameText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            usernameText.Text = usernameText.Text.Replace(" ", "");
+        }
+
+        private void passwordText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            passwordText.Text = passwordText.Text.Replace(" ", "");
         }
     }
 }

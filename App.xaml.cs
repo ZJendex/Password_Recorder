@@ -17,31 +17,16 @@ namespace Password_Recorder
 
     public class Account
     {
+        public string Name { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
 
-        private string nameValue;
-
-        public string Name
+        public Account (string Name, string Username, string Password)
         {
-            get { return nameValue; }
-            set { nameValue = value; }
+            this.Name = Name;
+            this.Username = Username;
+            this.Password = Password;
         }
-
-        private string usernameValue;
-
-        public string Username
-        {
-            get { return usernameValue; }
-            set { usernameValue = value; }
-        }
-
-        private string passwordValue;
-
-        public string Password
-        {
-            get { return passwordValue; }
-            set { passwordValue = value; }
-        }
-
     }
 
 }
