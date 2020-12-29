@@ -23,6 +23,9 @@ namespace Password_Recorder
         public deletePage()
         {
             InitializeComponent();
+            DataBase db = new DataBase(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+            // send data to dataGrid
+            AccountsGrid.ItemsSource = db.GetData();
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -40,32 +43,9 @@ namespace Password_Recorder
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string pathName = @"c:\Users\zhube\AppData\MyWindowsApp";
-            string fileName = "password.txt";
-            string pathString = System.IO.Path.Combine(pathName, fileName);
-
-            var items = new List<Account>();
-
-            // if DB doesn't created, create the file
-            if (!System.IO.File.Exists(pathString))
-            {
-                using (System.IO.FileStream fs = System.IO.File.Create(pathString));
-            }
-
-            string[] lines = System.IO.File.ReadAllLines(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
-            foreach (string line in lines)
-            {
-                // Use a tab to indent each line of the file.
-                string trimedLine = line.Trim();
-                string[] words = System.Text.RegularExpressions.Regex.Split(trimedLine, @"\s{1,}");
-                if (words.Length == 3)
-                {
-                    items.Add(new Account(words[0], words[1], words[2]));
-                }
-            }
-
+            DataBase db = new DataBase(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
             // send data to dataGrid
-            AccountsGrid.ItemsSource = items;
+            AccountsGrid.ItemsSource = db.GetData();
         }
 
         /**
@@ -104,22 +84,15 @@ namespace Password_Recorder
         {
             // get the location
             int loc = GetSelectedRow(AccountsGrid).GetIndex();
-            int count = 0;
-            ArrayList rst = new ArrayList();
-            string[] lines = System.IO.File.ReadAllLines(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
-
-            // only take lines wtihout target line
-            foreach (string line in lines)
-            {
-                if (count != loc)
-                {
-                    rst.Add(line);
-                }
-                count++;
-            }
-            
+            // get the database
+            DataBase db = new DataBase(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+            var rst = db.GetWithoutData(loc);
             // re-print the file
-            System.IO.File.WriteAllLines(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt", (String[])rst.ToArray(typeof(string)));
+            System.IO.File.WriteAllLines(db.FilePath, (String[])rst.ToArray(typeof(string)));
+            // refresh the database
+            db.LoadDB();
+            AccountsGrid.ItemsSource = db.GetData();
+
             string message = loc + " " + "Delete successfully!!";
             MessageBox.Show(message);
         }
