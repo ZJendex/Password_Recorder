@@ -37,25 +37,24 @@
         <Label Name = "nameLabel" Grid.Row = "1" Margin = "2 30 0 0" HorizontalAlignment="Right">_Account:</Label>
 
         <TextBox Name = "nameText" Grid.Column = "1" Grid.Row = "1" Margin = "2 30 0 0" 
-         Text = "{Binding Name, Mode = TwoWay}" TextChanged="nameText_TextChanged"/>
+         Text = "{Binding Name, Mode = TwoWay}" TextChanged="NameText_TextChanged"/>
 
         <Label Name = "usernameLabel" Margin = "2" Grid.Row = "2" HorizontalAlignment="Right">_Username:</Label>
 
         <TextBox Name = "usernameText" Grid.Column = "1" Grid.Row = "2" Margin = "2" 
-         Text = "{Binding Username, Mode = TwoWay}" TextChanged="usernameText_TextChanged"/>
+         Text = "{Binding Username, Mode = TwoWay}" TextChanged="UsernameText_TextChanged"/>
 
         <Label Name = "passwordLabel" Margin = "2" Grid.Row = "3" HorizontalAlignment="Right">_Password:</Label>
 
         <TextBox Name = "passwordText" Grid.Column = "1" Grid.Row = "3" Margin = "2" 
-         Text = "{Binding Password, Mode = TwoWay}" TextChanged="passwordText_TextChanged"/>
+         Text = "{Binding Password, Mode = TwoWay}" TextChanged="PasswordText_TextChanged"/>
 
         <StackPanel Grid.Row = "4" Grid.Column = "1" Margin="15 20">
             <Button Content = "Save" Click="Save_Click" />
         </StackPanel>
 
-        <Button Grid.Row="5" Click="Seach_Click" Style="{StaticResource buttonStyle}" HorizontalAlignment="Left">查</Button>
+        <Button Grid.Row="5" Click="Seach_Click"  Style="{StaticResource buttonStyle}"  HorizontalAlignment="Left">查</Button>
 
         <Button Grid.Row="5" Click="Delete_Click" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Grid.Column="2">删</Button>
-
     </Grid>
 </Page>

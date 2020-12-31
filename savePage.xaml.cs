@@ -50,17 +50,17 @@ namespace Password_Recorder
             this.NavigationService.Navigate(deletePage);
         }
 
-        private void nameText_TextChanged(object sender, TextChangedEventArgs e)
+        private void NameText_TextChanged(object sender, TextChangedEventArgs e)
         {
             nameText.Text = nameText.Text.Replace(" ", "");
         }
 
-        private void usernameText_TextChanged(object sender, TextChangedEventArgs e)
+        private void UsernameText_TextChanged(object sender, TextChangedEventArgs e)
         {
             usernameText.Text = usernameText.Text.Replace(" ", "");
         }
 
-        private void passwordText_TextChanged(object sender, TextChangedEventArgs e)
+        private void PasswordText_TextChanged(object sender, TextChangedEventArgs e)
         {
             passwordText.Text = passwordText.Text.Replace(" ", "");
         }

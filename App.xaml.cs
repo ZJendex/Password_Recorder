@@ -33,12 +33,12 @@ namespace Password_Recorder
     public class DataBase 
     {
         public string FilePath { get; set; }
-        public string[] lines { get; set; }
+        public string[] Lines { get; set; }
 
         public DataBase (string FilePath)
         {
             this.FilePath = FilePath;
-            this.lines = System.IO.File.ReadAllLines(this.FilePath);
+            this.Lines = System.IO.File.ReadAllLines(this.FilePath);
             // if DB doesn't created, create the file
             if (!System.IO.File.Exists(this.FilePath))
             {
@@ -48,13 +48,13 @@ namespace Password_Recorder
 
         public void LoadDB()
         {
-            this.lines = System.IO.File.ReadAllLines(this.FilePath);
+            this.Lines = System.IO.File.ReadAllLines(this.FilePath);
         }
         public List<Account> GetData()
         {
             var items = new List<Account>();
 
-            foreach (string line in this.lines)
+            foreach (string line in this.Lines)
             {
                 string trimedLine = line.Trim();
                 string[] words = System.Text.RegularExpressions.Regex.Split(trimedLine, @"\s{1,}");
@@ -70,8 +70,8 @@ namespace Password_Recorder
             ArrayList rst = new ArrayList();
 
             int count = 0;
-            // only take lines wtihout target line
-            foreach (string line in this.lines)
+            // only take Lines wtihout target line
+            foreach (string line in this.Lines)
             {
                 if (count != index)
                 {
@@ -86,7 +86,7 @@ namespace Password_Recorder
             string password = "";
 
             int count = 0;
-            foreach (string line in this.lines)
+            foreach (string line in this.Lines)
             {
                 if (count == index)
                 {
