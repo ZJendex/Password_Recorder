@@ -27,7 +27,7 @@
 
         <!-- Background -->
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\zhube\SynologyDrive\CS文件\WindowsAPP\Password_Recorder\Resources\Love and Liberty.jpg"/>
+            <ImageBrush ImageSource="C:\Users\zhube\SynologyDrive\CS文件\WindowsAPP\Password_Recorder\Resources\Dull.jpg"/>
         </Grid.Background>
 
         <Label Style="{StaticResource headerTextStyle}" Grid.Row="0" Height="45" Margin="144,0,136,0" Width="40" RenderTransformOrigin="0.45,0.504" Grid.Column="1">

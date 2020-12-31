@@ -50,7 +50,6 @@ namespace Password_Recorder
         {
             this.lines = System.IO.File.ReadAllLines(this.FilePath);
         }
-
         public List<Account> GetData()
         {
             var items = new List<Account>();

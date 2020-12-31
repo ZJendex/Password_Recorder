@@ -1,20 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System.IO;
+
 
 namespace Password_Recorder
 {
@@ -33,6 +22,8 @@ namespace Password_Recorder
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            Encryptor ecptr = new Encryptor();
+            // account.Password = ecptr.Encode(account.Password).ToString();
             string message = account.Name + " " + account.Username + " " + account.Password;
             using (System.IO.StreamWriter file =
             new System.IO.StreamWriter(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt", true))
