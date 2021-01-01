@@ -51,7 +51,7 @@
             </Style>
 
             <!-- Button style -->
-            <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="buttonStyle">
                 <Setter Property="Width" Value="125" />
                 <Setter Property="Height" Value="Auto" />
                 <Setter Property="Margin" Value="5 5 5 5"/>

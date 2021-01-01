@@ -56,10 +56,10 @@
 
         </DataGrid>
 
-        <Button Click="Button_Click" Grid.Column="1" Grid.Row="2" MaxWidth="150">Refresh</Button>
+        <Button Click="Button_Click" Grid.Column="1" Grid.Row="2" MaxWidth="150" Style="{StaticResource buttonStyle}">Refresh</Button>
 
-        <Button Grid.Row="3" Click="Save_Click" HorizontalAlignment="Left" >存</Button>
+        <Button Grid.Row="3" Click="Save_Click" HorizontalAlignment="Left" Style="{StaticResource buttonStyle}">存</Button>
 
-        <Button Grid.Row="3" Click="Delete_Click"  HorizontalAlignment="Right">删</Button>
+        <Button Grid.Row="3" Click="Delete_Click"  HorizontalAlignment="Right" Style="{StaticResource buttonStyle}">删</Button>
     </Grid>
 </Page>
