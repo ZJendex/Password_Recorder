@@ -24,6 +24,18 @@ namespace Password_Recorder
         {
             Encryptor ecptr = new Encryptor();
             // account.Password = ecptr.Encode(account.Password).ToString();
+
+            // if first two property is empty, return
+            if (account.Name.Trim() == "")
+            {
+                MessageBox.Show("Please filled up the Account and Username :)");
+                return;
+            }
+            if (account.Username.Trim() == "")
+            {
+                MessageBox.Show("Please filled up the Account and Username :)");
+                return;
+            }
             string message = account.Name + " " + account.Username + " " + account.Password;
             using (System.IO.StreamWriter file =
             new System.IO.StreamWriter(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt", true))
