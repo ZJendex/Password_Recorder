@@ -14,7 +14,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.7*" />
+            <RowDefinition Height="0.4*" />
             <RowDefinition Height="2*" />
             <RowDefinition Height="40" />
             <RowDefinition Height="40" />
@@ -29,25 +29,25 @@
             查
         </Label>
 
-        <Border Style="{StaticResource listHeaderStyle}" Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,0.333">
+        <!--<Border Style="{StaticResource listHeaderStyle}" Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,0.333">
             <Label Style="{StaticResource listHeaderTextStyle}">Accounts List</Label>
-        </Border>
+        </Border>-->
 
         <DataGrid
             HorizontalAlignment="Center" VerticalAlignment="Top" Margin="12,12,12,12" Grid.Row="1" Height="200" Width="600"
             AutoGenerateColumns="False" Name="AccountsGrid" >
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name"  Binding="{Binding Path = Name}"/>
-                <DataGridTextColumn Header="Username" Binding="{Binding Path = Username}" />
-                <DataGridTextColumn Header="Password" Binding="{Binding Path = Password}" />
+                <DataGridTextColumn Header="Name"  Binding="{Binding Path = Name}" Width="*"/>
+                <DataGridTextColumn Header="Username" Binding="{Binding Path = Username}" Width="*"/>
+                <DataGridTextColumn Header="Password" Binding="{Binding Path = Password}" Width="*"/>
 
-                <DataGridTemplateColumn Header="Action">
+                <DataGridTemplateColumn Header="Action" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Margin="2 0" Click="Copy_Click">Copy</Button>
-                                <Button Margin="2 0" Click="Show_Click">Show</Button>
+                                <Button Style="{StaticResource buttonColStyle}" Margin="2 0" Click="Copy_Click">Copy</Button>
+                                <Button Style="{StaticResource buttonColStyle}" Margin="2 0" Click="Show_Click">Show</Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -58,8 +58,8 @@
 
         <Button Click="Button_Click" Grid.Column="1" Grid.Row="2" MaxWidth="150">Refresh</Button>
 
-        <Button Grid.Row="3" Click="Save_Click" Style="{StaticResource buttonStyle}" HorizontalAlignment="Left"  Height="Auto">存</Button>
+        <Button Grid.Row="3" Click="Save_Click" HorizontalAlignment="Left" >存</Button>
 
-        <Button Grid.Row="3" Click="Delete_Click" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Height="Auto">删</Button>
+        <Button Grid.Row="3" Click="Delete_Click"  HorizontalAlignment="Right">删</Button>
     </Grid>
 </Page>

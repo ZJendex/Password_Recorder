@@ -51,10 +51,28 @@
             </Style>
 
             <!-- Button style -->
-            <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+            <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
                 <Setter Property="Width" Value="125" />
-                <Setter Property="Height" Value="40" />
+                <Setter Property="Height" Value="Auto" />
+                <Setter Property="Margin" Value="5 5 5 5"/>
+                <Setter Property="Background" Value="#386f96"/>
+                <Setter Property="Opacity" Value="0.8"/>
+                <Setter Property="pu:ButtonHelper.ButtonStyle" Value="Standard"/>
+                <Style.Triggers>
+                    <Trigger Property="pu:ButtonHelper.ButtonStyle" Value="Standard">
+                        <Setter Property="pu:ButtonHelper.CornerRadius" Value="15"/>
+                        <Setter Property="pu:ButtonHelper.ClickStyle" Value="Sink"/>
+                    </Trigger>
+                </Style.Triggers>
             </Style>
+
+            <!-- Button style in list-->
+            <Style x:Key="buttonColStyle" TargetType="{x:Type Button}">
+                <Setter Property="Width" Value="50" />
+                <Setter Property="Height" Value="30" />
+            </Style>
+
+            
         </ResourceDictionary>
 
     </Application.Resources>
