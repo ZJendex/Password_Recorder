@@ -50,11 +50,11 @@
          Text = "{Binding Password, Mode = TwoWay}" TextChanged="PasswordText_TextChanged"/>
 
         <StackPanel Grid.Row = "4" Grid.Column = "1" Margin="15 20">
-            <Button Content = "Save" Click="Save_Click" Width="175" Height="30"/>
+            <Button Content = "Save" Click="Save_Click" Width="175" Height="30" Style="{StaticResource buttonStyle}"/>
         </StackPanel>
 
-        <Button Grid.Row="5" Click="Seach_Click"   HorizontalAlignment="Left">查</Button>
+        <Button Grid.Row="5" Click="Seach_Click"   HorizontalAlignment="Left" Style="{StaticResource buttonStyle}">查</Button>
 
-        <Button Grid.Row="5" Click="Delete_Click"  HorizontalAlignment="Right" Grid.Column="2">删</Button>
+        <Button Grid.Row="5" Click="Delete_Click"  HorizontalAlignment="Right" Grid.Column="2" Style="{StaticResource buttonStyle}">删</Button>
     </Grid>
 </Page>
