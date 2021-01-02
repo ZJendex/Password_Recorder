@@ -14,6 +14,7 @@ namespace Password_Recorder
     /// </summary>
     public partial class App : Application
     {
+        public static RSAEncryptor RSAr = new RSAEncryptor();
     }
 
     public class Account

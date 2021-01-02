@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,8 +23,7 @@ namespace Password_Recorder
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            Encryptor ecptr = new Encryptor();
-            // account.Password = ecptr.Encode(account.Password).ToString();
+            UnicodeEncoding ByteConverter = new UnicodeEncoding();
 
             // if first two property is empty, return
             if (account.Name.Trim() == "")
@@ -36,6 +36,15 @@ namespace Password_Recorder
                 MessageBox.Show("Please filled up the Account and Username :)");
                 return;
             }
+
+            //// encode the password
+            //byte[] plaintext = ByteConverter.GetBytes(account.Password);
+            //byte[] encryptedtext = App.RSAr.Encryption(plaintext, App.RSAr.RSA.ExportParameters(false), false);
+            //string pw = ByteConverter.GetString(encryptedtext);
+            //// decode the password
+            //byte[] decryptedtex = App.RSAr.Decryption(encryptedtext, App.RSAr.RSA.ExportParameters(true), false);
+            //string password = ByteConverter.GetString(decryptedtex);
+
             string message = account.Name + " " + account.Username + " " + account.Password;
             using (System.IO.StreamWriter file =
             new System.IO.StreamWriter(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt", true))

@@ -103,13 +103,15 @@ namespace Password_Recorder
 
         private void Show_Click(object sender, RoutedEventArgs e)
         {
+            UnicodeEncoding ByteConverter = new UnicodeEncoding();
+
             // get the location
             int loc = GetSelectedRow(AccountsGrid).GetIndex();
 
             DataBase db = new DataBase(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
-            var rst = db.GetPassword(loc);
+            string password = db.GetPassword(loc);
 
-            string message = "The password is " + rst;
+            string message = "The password is " + password;
             MessageBox.Show(message);
         }
     }
