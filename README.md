@@ -3,5 +3,5 @@ An WPF application aiming to store password localy and safely
 
 # Encryption:
 * RSA
-* Base change
+* AES
 * Unique private encrypte algorism
