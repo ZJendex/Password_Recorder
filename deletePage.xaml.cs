@@ -23,7 +23,7 @@ namespace Password_Recorder
         public deletePage()
         {
             InitializeComponent();
-            DataBase db = new DataBase(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+            DataBase db = new DataBase(App.dbPath);
             // send data to dataGrid
             AccountsGrid.ItemsSource = db.GetData();
         }
@@ -43,7 +43,7 @@ namespace Password_Recorder
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DataBase db = new DataBase(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+            DataBase db = new DataBase(App.dbPath);
             // send data to dataGrid
             AccountsGrid.ItemsSource = db.GetData();
         }
@@ -85,7 +85,7 @@ namespace Password_Recorder
             // get the location
             int loc = GetSelectedRow(AccountsGrid).GetIndex();
             // get the database
-            DataBase db = new DataBase(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+            DataBase db = new DataBase(App.dbPath);
             var rst = db.GetWithoutData(loc);
             // re-print the file
             System.IO.File.WriteAllLines(db.FilePath, (String[])rst.ToArray(typeof(string)));

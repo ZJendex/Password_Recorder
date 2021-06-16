@@ -15,6 +15,7 @@ namespace Password_Recorder
     public partial class App : Application
     {
         public static RSAEncryptor RSAr = new RSAEncryptor();
+        public static string dbPath = @"c:\Users\zhube\AppData\MyWindowsApp\password.txt";
     }
 
     public class Account

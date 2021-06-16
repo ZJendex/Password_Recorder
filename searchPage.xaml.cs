@@ -28,7 +28,7 @@ namespace Password_Recorder
         public searchPage()
         {
             InitializeComponent();
-            DataBase db = new DataBase(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt"); 
+            DataBase db = new DataBase(App.dbPath); 
             // send data to dataGrid
             AccountsGrid.ItemsSource = db.GetData();
         }
@@ -49,7 +49,7 @@ namespace Password_Recorder
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DataBase db = new DataBase(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+            DataBase db = new DataBase(App.dbPath);
             // send data to dataGrid
             AccountsGrid.ItemsSource = db.GetData();
         }
@@ -91,7 +91,7 @@ namespace Password_Recorder
             // get the location
             int loc = GetSelectedRow(AccountsGrid).GetIndex();
 
-            DataBase db = new DataBase(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+            DataBase db = new DataBase(App.dbPath);
             var rst = db.GetPassword(loc);
 
             // copy password to clipboard
@@ -108,7 +108,7 @@ namespace Password_Recorder
             // get the location
             int loc = GetSelectedRow(AccountsGrid).GetIndex();
 
-            DataBase db = new DataBase(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt");
+            DataBase db = new DataBase(App.dbPath);
             string password = db.GetPassword(loc);
 
             string message = "The password is " + password;

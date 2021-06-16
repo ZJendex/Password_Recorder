@@ -22,7 +22,7 @@
 
         <!-- Background -->
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\zhube\SynologyDrive\CS文件\WindowsAPP\Password_Recorder\Resources\Dull.jpg"/>
+            <ImageBrush ImageSource=".\Resources\Dull.jpg"/>
         </Grid.Background>
 
         <Label Style="{StaticResource headerTextStyle}" Grid.Row="0" Height="45" Margin="330,0" Width="40">

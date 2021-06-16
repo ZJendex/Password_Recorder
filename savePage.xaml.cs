@@ -47,7 +47,7 @@ namespace Password_Recorder
 
             string message = account.Name + " " + account.Username + " " + account.Password;
             using (System.IO.StreamWriter file =
-            new System.IO.StreamWriter(@"c:\Users\zhube\AppData\MyWindowsApp\password.txt", true))
+            new System.IO.StreamWriter(App.dbPath, true))
             {
                 file.WriteLine(message);
             }
